@@ -2,7 +2,8 @@
   (:use lkit.routes.home
         compojure.core)
   (:require [noir.util.middleware :as middleware]
-            [compojure.route :as route]))
+            [compojure.route :as route]
+            [org.httpkit.server :as httpkit]))
 
 (defroutes app-routes
   (route/resources "/")
@@ -31,3 +32,6 @@
              ))
 
 (def war-handler (middleware/war-handler app))
+
+(defn -main []
+  (httpkit/run-server war-handler {:port 8080}))

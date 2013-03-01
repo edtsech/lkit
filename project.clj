@@ -8,11 +8,13 @@
                  [ring-server "0.2.7"]                 
                  [com.taoensso/timbre "1.5.1"]
                  [com.taoensso/tower "1.2.0"]
-                 [markdown-clj "0.9.19"]]  
+                 [markdown-clj "0.9.19"]
+                 [http-kit "2.0.0-RC4"]]  
   :plugins [[lein-ring "0.8.2"]]
   :ring {:handler lkit.handler/war-handler
          :init    lkit.handler/init
          :destroy lkit.handler/destroy}  
+  :main lkit.handler/-main
   :profiles
   {:production {:ring {:open-browser? false 
                        :stacktraces?  false 
